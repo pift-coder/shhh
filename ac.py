@@ -82,7 +82,6 @@ class sharp():
                 "saveSettings": True,
                 "guiHidden": False,
                 "bindHideGUI": 0,
-                "discordRichPresence": False
             }     
         }
 
@@ -109,7 +108,6 @@ class sharp():
 
         self.record = itertools.cycle(self.config["recorder"]["record"])
 
-        threading.Thread(target=self.discordRichPresence, daemon=True).start()
         
         threading.Thread(target=self.windowListener, daemon=True).start()
         threading.Thread(target=self.leftBindListener, daemon=True).start()
@@ -661,8 +659,6 @@ if __name__ == "__main__":
             else:
                 win32gui.SetWindowPos(guiWindows, win32con.HWND_NOTOPMOST, 0, 0, 0, 0, win32con.SWP_NOMOVE | win32con.SWP_NOSIZE)
 
-        def toggleDiscordRPC(id: int, value: bool):
-            sharpClass.config["misc"]["discordRichPresence"] = value
 
         dpg.create_viewport(title=f"[v{version}] sharp - clicker.best", width=810, height=435)
 
@@ -842,8 +838,6 @@ if __name__ == "__main__":
                     checkboxAlwaysOnTop = dpg.add_checkbox(label="Always On Top", callback=toggleAlwaysOnTop)
 
                     dpg.add_spacer(width=75)
-
-                    checkboxAlwaysOnTop = dpg.add_checkbox(label="Discord Rich Presence", default_value=sharpClass.config["misc"]["discordRichPresence"], callback=toggleDiscordRPC)
 
                     dpg.add_spacer(width=75)
                     dpg.add_separator()
