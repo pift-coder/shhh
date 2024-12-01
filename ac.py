@@ -82,7 +82,7 @@ class sharp():
                 "saveSettings": True,
                 "guiHidden": False,
                 "bindHideGUI": 0,
-                "discordRichPresence": True
+                "discordRichPresence": False
             }     
         }
 
